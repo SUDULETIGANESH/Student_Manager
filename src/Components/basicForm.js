@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef} from 'react';
 import { useDispatch } from 'react-redux';
 import { addTask, editTask } from '../rtk/Reducers';
 
@@ -6,7 +6,12 @@ import { addTask, editTask } from '../rtk/Reducers';
 function BasicForm({selectedStudent,setSelectedStudent}){
     const [name,setName] = useState('');
     const [department,setDepartment] = useState('');
+    const inputValue = useRef(null);
     const dispatch = useDispatch();
+
+    useEffect(()=>{
+        inputValue.current.focus();
+    })
 
     useEffect(()=>{
         if(selectedStudent){
@@ -34,6 +39,7 @@ function BasicForm({selectedStudent,setSelectedStudent}){
                 <input
                     type="text"
                     value={name}
+                    ref={inputValue}
                     placeholder="Name"
                     onChange = {e => {setName(e.target.value)}}
                 />
