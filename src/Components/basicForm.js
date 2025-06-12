@@ -11,7 +11,7 @@ function BasicForm({selectedStudent,setSelectedStudent}){
 
     useEffect(()=>{
         inputValue.current.focus();
-    })
+    },[])
 
     useEffect(()=>{
         if(selectedStudent){
