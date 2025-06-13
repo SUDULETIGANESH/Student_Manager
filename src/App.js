@@ -1,11 +1,13 @@
+import { ToastContainer } from 'react-toastify';
 import './App.css';
 import StudentList from './Pages/studentList'
-import BasicForm from './Components/basicForm';
+
 
 function App() {
   return (
     <>
       <StudentList />
+      <ToastContainer/>
     </>
   );
 }

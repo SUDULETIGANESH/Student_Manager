@@ -1,10 +1,11 @@
 import { createSlice,nanoid } from "@reduxjs/toolkit";
+import {toast} from 'react-toastify'
 
 
 const initialState = {
     students:[
-        {id:1,Name:"Ganesh",Department:"CSE"},
-        {id:2,Name:"Mahesh",Department:"CSE"}
+        {id:1,Name:"Ganesh",Department:"CSE",Year:"2022"},
+        {id:2,Name:"Mahesh",Department:"CSE",Year:"2022"}
     ]
 }
 
@@ -13,25 +14,28 @@ const studentReducer = createSlice({
     initialState,
     reducers:{
         addTask(state,action){
-            const {name,department} = action.payload;
-            console.log(name,department);
+            const {name,department,year} = action.payload;
             state.students.push({
                 id: nanoid(),
                 Name:name,
                 Department:department,
+                Year:year,
             });
-            console.log(state.students);
+            toast.success("Successfully Added",{position:"top-right", autoClose:"3"})
         },
         removeTask(state,action){
             state.students = state.students.filter(student => student.id !== action.payload);
+            toast.success("Removed Successfully",{position:"top-right", autoClose:"3"})
         },
         editTask(state,action){
-           const {id,name,department} = action.payload;
+           const {id,name,department,year} = action.payload;
            const existingStudent = state.students.find(student => student.id === id);
            if(existingStudent){
             existingStudent.Name = name;
             existingStudent.Department = department;
+            existingStudent.Year= year;
            }
+           toast.success("Edited Successfully",{position:"top-right", autoClose:"3"})
         },
     },
     
