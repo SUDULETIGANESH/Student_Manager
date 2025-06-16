@@ -21,11 +21,11 @@ const studentReducer = createSlice({
                 Department:department,
                 Year:year,
             });
-            toast.success("Successfully Added",{position:"top-right", autoClose:"3"})
+            toast.success("Successfully Added",{position:"top-right", autoClose:"1"})
         },
         removeTask(state,action){
             state.students = state.students.filter(student => student.id !== action.payload);
-            toast.success("Removed Successfully",{position:"top-right", autoClose:"3"})
+            toast.success("Removed Successfully",{position:"top-right", autoClose:"1"})
         },
         editTask(state,action){
            const {id,name,department,year} = action.payload;
@@ -35,7 +35,7 @@ const studentReducer = createSlice({
             existingStudent.Department = department;
             existingStudent.Year= year;
            }
-           toast.success("Edited Successfully",{position:"top-right", autoClose:"3"})
+           toast.success("Edited Successfully",{position:"top-right", autoClose:"1"})
         },
     },
     
